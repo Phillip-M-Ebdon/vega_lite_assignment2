@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Number of Colonies (approx), 2000",
+  "title": "Number of Colonies (approx), 2000-2019",
   "config": {
     "background": "#262626",
     "text": {
@@ -22,14 +22,14 @@
     }
   },
   "data": {
-    "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/main/data/honey.csv"
+    "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/data/honey.csv"
   },
   "vconcat": [
     {
       "layer": [
         {
           "data": {
-            "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/main/data/us_10_topo.json",
+            "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/data/us_10_topo.json",
             "format": {
               "type": "topojson",
               "feature": "states"
@@ -51,7 +51,7 @@
               "lookup": "State",
               "from": {
                 "data": {
-                  "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/main/data/us_10_topo.json",
+                  "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/data/us_10_topo.json",
                   "format": {"type": "topojson", "feature": "states"}
                 },
                 "key": "properties.name"
