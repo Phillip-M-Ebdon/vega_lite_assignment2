@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Number of Colonies (approx), 2000-2019",
+  "title": "Number of Colonies (approx), 2000",
   "config": {
     "background": "#262626",
     "text": {
@@ -54,13 +54,14 @@
                   "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/data/us_10_topo.json",
                   "format": {"type": "topojson", "feature": "states"}
                 },
-                "key": "properties.name"
+                "key": "properties.name",
+                "fields": ["geometry", "properties.area"]
               },
-              "as": "geo"
+              "as": ["geo", "sqmiles"]
             },
             {
-              "calculate": "datum.Honey_producing_colonies * 300",
-              "as": "Approx Colony Count"
+              "calculate": "(datum.Honey_producing_colonies * 300) / datum.sqmiles",
+              "as": "Colonies_per_Sq_Mile"
             }
           ],
           "projection": {"type": "albersUsa"},
@@ -69,15 +70,14 @@
             "shape": {"field": "geo", "type": "geojson"},
             "color": {
               "condition": {
-                "scale": {"type": "threshold", "domain": [10000, 50000, 100000, 150000],
-                  "scheme": "oranges"},
+                "scale": {"scheme": "oranges"},
                 "selection": "pts",
-                "field": "Approx Colony Count",
+                "field": "Colonies_per_Sq_Mile",
                 "type": "quantitative"
               },
               "value": "grey"
             },
-            "tooltip": [{"field": "State"}, {"field": "Approx Colony Count"}]
+            "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile"}]
           },
           "selection": {
             "pts": {"type": "single", "on": "click", "fields": ["State"]},
@@ -94,38 +94,41 @@
       ]
     },
     {
-      "width": 600,
+      "mark":"circle",
       "transform": [
         {
-          "calculate": "datum.Honey_producing_colonies * 300",
-          "as": "Approx Colony Count"
+          "lookup": "State",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/data/us_10_topo.json",
+              "format": {"type": "topojson", "feature": "states"}
+            },
+            "key": "properties.name",
+            "fields": ["geometry", "properties.area"]
+          },
+          "as": ["geo", "sqmiles"]
         },
-        {"filter": {"selection": "pts"}}
+        {
+          "calculate": "(datum.Honey_producing_colonies * 300) / datum.sqmiles",
+          "as": "Colonies_per_Sq_Mile"
+        }
       ],
-      "mark": "circle",
       "encoding": {
-        "x": {"field": "Year", "type": "ordinal"},
-        "y": {
-          "field": "Average_price_per_pound",
-          "type": "quantitative",
-          "scale": {"domain": [0, 9]}
+        "color": {
+          "field": "Colonies_per_Sq_Mile",
+          "type": "quantitative"
         },
         "size": {
-          "scale": {"type": "threshold", "domain": [25, 50, 100],
-            "range": [1, 50, 200, 500]
-          },
+          "field": "Average_price_per_pound",
+          "type": "quantitative"
+        },
+        "x": {
+          "field": "Year"
+        },
+        "y": {
           "field": "Yield_per_colony",
           "type": "quantitative"
-        },
-        "color": {
-          "scale": {
-            "type": "threshold", "domain": [10000, 50000, 100000, 150000], "range":  [1, 5, 10, 20],
-            "scheme": "oranges"
-          },
-          "field": "Approx Colony Count",
-          "type": "quantitative"
-        },
-        "tooltip": [{"field": "State"}, {"field": "Approx Colony Count"}]
+        }
       }
     }
   ]
