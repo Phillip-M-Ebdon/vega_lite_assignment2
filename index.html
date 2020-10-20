@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> FIT3179 Vega-Lite Maps homework</title>
+
+    <!-- Import Vega & Vega-Lite  -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+    <!-- Import vega-embed -->
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+    <!--
+        USA Map data sourced from topoJSON us-atlas: https://github.com/topojson/us-atlas
+        USA apiary industry data sourced from: https://www.kaggle.com/kenshoimpactteam/nassbeecolonyandhoney
+    -->
+
+</head>
+<body>
+
+    <div id="map"></div>
+    <div id=""></div>
+    <script>
+        const spec = "js/concatted_charts.vg.json";
+        vegaEmbed('#map', spec).then( () => {
+            console.log('success');
+        }).catch(console.error);
+    </script>
+</body>
+</html>
