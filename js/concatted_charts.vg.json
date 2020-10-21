@@ -72,7 +72,7 @@
             "shape": {"field": "geo", "type": "geojson"},
             "color": {
               "condition": {
-                "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.01, 0.1, 0.5, 1, 1.5, 2]},
+                "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.2, 0.5, 1, 3, 5, 7]},
                 "selection": "pts",
                 "field": "Colonies_per_Sq_Mile",
                 "type": "quantitative"
@@ -120,7 +120,7 @@
       "encoding": {
         "color": {
           "field": "Colonies_per_Sq_Mile",
-          "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.05, 0.1, 0.5, 1, 3, 5, 7]},
+          "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.2, 0.5, 1, 3, 5, 7]},
           "title": "Colonies per Square Mile",
           "type": "quantitative"
         },
