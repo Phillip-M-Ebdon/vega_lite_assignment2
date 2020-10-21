@@ -88,7 +88,7 @@
               "type": "single",
               "fields": ["Year"],
               "bind": {
-                "Year": {"input": "range", "min": 2000, "max": 2019, "step": 1}
+                "Year": {"input": "range", "min": 1989, "max": 2019, "step": 1}
               }
             }
           }
@@ -151,6 +151,10 @@
     {
       "mark": "square",
       "width": 600,
+      "transform": [
+        {"calculate": "year(datum.Year)", "as": "Year"},
+        {"calculate": "datum.Value_of_production * 1000", "as": "Total_Value" }
+      ],
       "encoding": {
         "y": {
           "field": "Production",
@@ -162,13 +166,40 @@
           "title": "State"
         },
         "color": {
-          "field": "Value_of_production",
-          "type": "quantitative",
-          "scale": {
-            "scheme": "yelloworangered"
-          }
+          "condition": {
+            "selection": "map_filt",
+            "field": "Total_Value",
+            "type": "quantitative",
+            "scale": {
+              "scheme": "yelloworangered"
+            }
+          },
+          "value": "gray"
+
         },
-        "tooltip": [{"field": "State"},{"field": "Year"},{"field": "Value_of_production"},{"field": "Production"}]
+        "size":{
+          "condition":[{
+            "selection": {"and": ["map_filt","pts"]},
+            "value": 500
+          },
+            {
+              "selection": {"or": ["map_filt","pts"]},
+              "value": 100
+            }],
+          "value": 10
+        },
+        "order": {
+          "condition":[{
+            "selection": {"and": ["map_filt","pts"]},
+            "value": 2
+          },
+            {
+              "selection": {"or": ["map_filt","pts"]},
+              "value": 1
+            }],
+          "value": 0
+        },
+        "tooltip": [{"field": "State"}, {"field": "Year", "title": "Year"}, {"field": "Total_Value", "as": "Total Value (US$)"}, {"field": "Total Production (lbs)"}]
       }
     }
   ]

@@ -15,6 +15,7 @@
     <!-- Pure.CSS import -->
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!--
         USA Map data sourced from topoJSON us-atlas: https://github.com/topojson/us-atlas
         USA apiary industry data sourced from: https://www.kaggle.com/kenshoimpactteam/nassbeecolonyandhoney
@@ -28,25 +29,55 @@
                 Bees and Honey in America
             </div>
         </div>
-        <div class="pure-u-1-2">
-            <div class="explanation"></div>
+        <div class="pure-u-1-4">
+            <div>
+            <div id="exp1" class="explanation">
+                Here a map of American states displays the normalised number of bee colonies per square mile. <br>
+                Some states for some years are omitted from the NASS document or grouped under other, as such have been left grey.<br>
+                <br>
+                Hovering on a state will provide an approximate colonies/sq.Mile value, and the States name.<br>
+                Clicking a State will filter the scatter plot below to that state only.<br>
+                At the bottom of the page is a slider that controls the year, this will Change the year the map is based on.<br>
+            </div>
+
+            <div id="exp2" class="explanation">
+                This plot shows the Total Production of honey in pounds and the Value in US Dollars.<br>
+                The Year slider will cause that year to highlight and grow for each state, <br> by clicking a state on the map you'll focus that state by making their icons even larger.<br>
+                Give it a try!<br>
+            </div>
+            </div>
         </div>
-        <div class="pure-u-1-2">
+        <div class="pure-u-3-4">
             <div id="map"></div>
         </div>
-        <div class="pure-u-1-2">
-            <div class="explanation"></div>
-        </div>
-        <div class="pure-u-1-2">
-            <div id="heat"></div>
+
+        <br>
+        <div class="pure-u-1-1">
+            <div class="credit">
+                Data Used:
+                <li> USA Map data sourced from topoJSON us-atlas: <a href="https://github.com/topojson/us-atlas">https://github.com/topojson/us-atlas</a> </li>
+                <li> size of states sourced: <a href="https://statesymbolsusa.org/symbol-official-item/national-us/uncategorized/states-size">https://statesymbolsusa.org/symbol-official-item/national-us/uncategorized/states-size</a> </li>
+
+                <li> Cleaned USA apiary industry data sourced from: <a href="https://www.kaggle.com/kenshoimpactteam/nassbeecolonyandhoney"> https://www.kaggle.com/kenshoimpactteam/nassbeecolonyandhoney</a> </li>
+
+            </div>
         </div>
     </div>
 
     <script>
-        const spec = "js/concatted_charts.vg.json";
-        vegaEmbed('#map', spec).then( () => {
-            console.log('success');
-        }).catch(console.error);
+        async function doVega() {
+            const spec = "js/concatted_charts.vg.json";
+            await vegaEmbed('#map', spec).then( () => {
+                console.log('success');
+            }).catch(console.error);
+        }
+        function changeHeights() {
+            $("#exp1").height($("#map").height() * 2/3);
+            $("#exp2").height($("#map").height() * 1/3);
+        }
+        doVega().then( () =>
+            changeHeights()
+        )
 
 
     </script>

@@ -1,5 +1,5 @@
 body {
-    background-color: #161616
+    background-color: #666666
 }
 
 .title {
@@ -9,6 +9,14 @@ body {
 }
 
 .explanation {
+    float: left;
+    text-align: center;
     color: antiquewhite;
+    font-family: "Segoe UI Symbol";
+    max-width: 250px;
+}
+
+.credit {
+    color: lightgrey;
     font-family: "Segoe UI Symbol";
 }
