@@ -120,7 +120,8 @@
       "encoding": {
         "color": {
           "field": "Colonies_per_Sq_Mile",
-          "scale": {"scheme": "darkred", "type":"threshold", "domain":[0, 0.01, 0.1, 0.5, 1, 1.5, 2]},
+          "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.01, 0.1, 0.5, 1, 1.5, 2]},
+          "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.01, 0.1, 0.5, 1, 1.5, 2]},
           "title": "Colonies per Square Mile",
           "type": "quantitative"
         },
@@ -140,7 +141,8 @@
         },
         "y": {
           "field": "Yield_per_colony",
-          "type": "quantitative"
+          "type": "quantitative",
+          "scale": {"type": "linear", "domain": [0, 200]}
         },
         "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile"}]
       }
