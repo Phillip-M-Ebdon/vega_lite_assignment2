@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+  "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/data/honey.csv"
+  },
+  "mark": "square",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "timeUnit": "year",
+      "axis": {
+        "tickMinStep": 1
+      },
+      "title": "Year"
+    },
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State"
+    },
+    "color": {
+      "field": "Production",
+      "type": "quantitative"
+    },
+    "size": {
+      "field": "Value_of_production",
+      "type": "quantitative"
+    }
+  }
+}

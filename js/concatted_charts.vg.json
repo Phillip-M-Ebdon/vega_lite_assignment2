@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Number of Colonies (approx), 2000",
   "config": {
     "background": "#161616",
     "text": {
@@ -21,7 +20,8 @@
     },
     "title": {
       "color": "antiquewhite"
-    }
+    },
+    "font": "Segoe UI Symbol"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/data/honey.csv"
@@ -62,7 +62,7 @@
               "as": ["geo", "sqmiles"]
             },
             {
-              "calculate": "(datum.Honey_producing_colonies * 300) / datum.sqmiles",
+              "calculate": "(datum.Honey_producing_colonies * 1000) / datum.sqmiles",
               "as": "Colonies_per_Sq_Mile"
             }
           ],
@@ -79,7 +79,7 @@
               },
               "value": "grey"
             },
-            "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile"}]
+            "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile", "title": "Colonies per Sq Mile"}]
           },
           "selection": {
             "pts": {"type": "single", "on": "click", "fields": ["State"]},
@@ -112,7 +112,7 @@
           "as": ["geo", "sqmiles"]
         },
         {
-          "calculate": "(datum.Honey_producing_colonies * 300) / datum.sqmiles",
+          "calculate": "(datum.Honey_producing_colonies * 1000) / datum.sqmiles",
           "as": "Colonies_per_Sq_Mile"
         },
         {"filter": {"selection": "pts"}}
@@ -120,7 +120,6 @@
       "encoding": {
         "color": {
           "field": "Colonies_per_Sq_Mile",
-          "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.01, 0.1, 0.5, 1, 1.5, 2]},
           "scale": {"scheme": "yelloworangered", "type":"threshold", "domain":[0, 0.01, 0.1, 0.5, 1, 1.5, 2]},
           "title": "Colonies per Square Mile",
           "type": "quantitative"
@@ -137,14 +136,39 @@
           "timeUnit": "year",
           "axis": {
             "tickMinStep": 1
-          }
+          },
+          "title": null
         },
         "y": {
           "field": "Yield_per_colony",
           "type": "quantitative",
-          "scale": {"type": "linear", "domain": [0, 200]}
+          "scale": {"type": "linear", "domain": [0, 200]},
+          "title": "Avg pounds per Colony"
         },
         "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile"}]
+      }
+    },
+    {
+      "mark": "square",
+      "width": 600,
+      "encoding": {
+        "y": {
+          "field": "Production",
+          "type": "quantitative"
+        },
+        "x": {
+          "field": "State",
+          "type": "nominal",
+          "title": "State"
+        },
+        "color": {
+          "field": "Value_of_production",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "yelloworangered"
+          }
+        },
+        "tooltip": [{"field": "State"},{"field": "Year"},{"field": "Value_of_production"},{"field": "Production"}]
       }
     }
   ]

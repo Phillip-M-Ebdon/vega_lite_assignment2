@@ -12,6 +12,8 @@
 
     <!-- CSS file -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+    <!-- Pure.CSS import -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
 
     <!--
         USA Map data sourced from topoJSON us-atlas: https://github.com/topojson/us-atlas
@@ -20,14 +22,33 @@
 
 </head>
 <body>
+    <div class="pure-g">
+        <div class="pure-u-1-1">
+            <div class="title" style="height: 100px; text-align: center">
+                Bees and Honey in America
+            </div>
+        </div>
+        <div class="pure-u-1-2">
+            <div class="explanation"></div>
+        </div>
+        <div class="pure-u-1-2">
+            <div id="map"></div>
+        </div>
+        <div class="pure-u-1-2">
+            <div class="explanation"></div>
+        </div>
+        <div class="pure-u-1-2">
+            <div id="heat"></div>
+        </div>
+    </div>
 
-    <div id="map"></div>
-    <div id=""></div>
     <script>
         const spec = "js/concatted_charts.vg.json";
         vegaEmbed('#map', spec).then( () => {
             console.log('success');
         }).catch(console.error);
+
+
     </script>
 </body>
 </html>

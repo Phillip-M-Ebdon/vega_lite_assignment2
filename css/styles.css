@@ -1,3 +1,14 @@
 body {
-    background-color: #262626
+    background-color: #161616
+}
+
+.title {
+    color: antiquewhite;
+    font-family: "Segoe UI Symbol";
+    font-size: x-large;
+}
+
+.explanation {
+    color: antiquewhite;
+    font-family: "Segoe UI Symbol";
 }
