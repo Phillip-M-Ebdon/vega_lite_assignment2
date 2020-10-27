@@ -79,7 +79,10 @@
               },
               "value": "grey"
             },
-            "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile", "title": "Colonies per Sq Mile"}]
+            "tooltip": [
+              {"field": "State"},
+              {"field": "Colonies_per_Sq_Mile", "title": "Colonies per Sq Mile", "format": ".2f"}
+            ]
           },
           "selection": {
             "pts": {"type": "single", "on": "click", "fields": ["State"]},
@@ -145,7 +148,7 @@
           "scale": {"type": "linear", "domain": [0, 200]},
           "title": "Avg pounds per Colony"
         },
-        "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile"}]
+        "tooltip": [{"field": "State"}, {"field": "Colonies_per_Sq_Mile", "format": ".2f", "title": "Colonies per Sq Mile"}]
       }
     },
     {
