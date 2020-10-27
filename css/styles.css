@@ -19,6 +19,7 @@ body {
 .credit {
     vertical-align: bottom;
     display: table-cell;
+    height: 200px;
     color: lightgrey;
     font-family: "Segoe UI Symbol";
 }
