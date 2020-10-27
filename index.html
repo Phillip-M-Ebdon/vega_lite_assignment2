@@ -37,6 +37,7 @@
                 <br>
                 Hovering on a state will provide an approximate colonies/sq.Mile value, and the States name.<br>
                 Clicking a State will filter the scatter plot below to that state only.<br>
+                You can even hold `shift` and click multiple states to show a subset. <br>
                 At the bottom of the page is a slider that controls the year, this will Change the year the map is based on.<br>
             </div>
 
@@ -71,12 +72,16 @@
                 console.log('success');
             }).catch(console.error);
         }
-        function changeHeights() {
+        function doJquery() {
+            // These first two set div heights based on the heights of the vega output
             $("#exp1").height($("#map").height() * 2/3);
             $("#exp2").height($("#map").height() * 1/3);
+            // This re-names the binding
+            $("span.vega-bind-name").text("Year Selector");
+
         }
         doVega().then( () =>
-            changeHeights()
+            doJquery()
         )
 
 

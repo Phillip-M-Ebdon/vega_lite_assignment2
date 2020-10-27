@@ -1,5 +1,5 @@
 body {
-    background-color: #666666
+    background-color: #161616
 }
 
 .title {
@@ -9,14 +9,21 @@ body {
 }
 
 .explanation {
-    float: left;
-    text-align: center;
+    text-align: left;
+    float: right;
     color: antiquewhite;
     font-family: "Segoe UI Symbol";
     max-width: 250px;
 }
 
 .credit {
+    vertical-align: bottom;
+    display: table-cell;
     color: lightgrey;
+    font-family: "Segoe UI Symbol";
+}
+
+.vega-bind .vega-bind-name {
+    color: antiquewhite;
     font-family: "Segoe UI Symbol";
 }
