@@ -33,10 +33,31 @@ body {
     font-family: "Segoe UI Symbol";
 }
 
+input {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 5px;
+    background: antiquewhite;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: gold;
+    cursor: pointer;
+}
+
 
 span {
     color: antiquewhite;
     font-family: "Segoe UI Symbol";
+    padding: 10px;
 }
 
 img {
