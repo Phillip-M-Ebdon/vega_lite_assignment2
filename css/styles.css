@@ -7,8 +7,16 @@ body {
     font-family: "Segoe UI Symbol";
     font-size: 50px;
     padding-left: 50px;
-    padding-top: 50px;
+    padding-top: 150px;
 }
+
+.subtitle {
+    color: antiquewhite;
+    font-family: "Segoe UI Symbol";
+    font-size: 25px;
+    padding-left: 50px;
+}
+
 
 .explanation {
     text-align: left;
@@ -35,7 +43,7 @@ body {
 
 input {
     -webkit-appearance: none;
-    width: 50%;
+    width: 70%;
     height: 5px;
     background: antiquewhite;
     outline: none;
@@ -61,8 +69,9 @@ span {
 }
 
 img {
-    height: 60%;
-    width: 60%;
+    height: 50%;
+    width: 50%;
     float: right;
-    padding: 50px;
+    padding-top: 50px;
+    padding-bottom: 10px;
 }
