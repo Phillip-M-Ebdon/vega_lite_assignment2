@@ -4,13 +4,13 @@ body {
 
 @font-face {
     font-family: "Quicksand";
-    src: url("../quicksand/Quicksand-Regular.otf") format("opentype");
+    src: url("https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/quicksand/Quicksand-Regular.otf") format("opentype");
 }
 
 @font-face {
     font-family: "QuicksandBold";
     font-weight: bold;
-    src: url("../quicksand/Quicksand-Bold.otf") format("opentype");
+    src: url("https://raw.githubusercontent.com/Phillip-M-Ebdon/vega_lite_homework_2/master/quicksand/Quicksand-Bold.otf") format("opentype");
 }
 
 .title {
