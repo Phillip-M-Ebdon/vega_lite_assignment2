@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "config": {
     "background": "#161616",
-    "text": {"color": "antiquewhite", "fill": "antiquewhite"},
+    "text": {"color": "antiquewhite", "fill": "antiquewhite" },
     "axis": {
       "labelColor": "antiquewhite",
       "tickColor": "antiquewhite",
