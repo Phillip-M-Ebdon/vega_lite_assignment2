@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "config": {
     "background": "#161616",
-    "text": {"color": "antiquewhite", "fill": "antiquewhite" },
+    "text": {"color": "antiquewhite", "fill": "antiquewhite"},
     "axis": {
       "labelColor": "antiquewhite",
       "tickColor": "antiquewhite",
@@ -103,6 +103,7 @@
     },
     {
       "width": 600,
+      "height": 250,
       "mark": "circle",
       "transform": [
         {
@@ -173,6 +174,15 @@
             "field": "Colonies_per_Sq_Mile",
             "format": ".2f",
             "title": "Colonies per Sq Mile"
+          },
+          {
+            "field": "Yield_per_colony",
+            "format": ".2f",
+            "title": "Avg pounds per Colony"
+          },
+          {
+            "field": "Average_price_per_pound",
+            "title": "Avg price (USD) per Pound"
           }
         ]
       }
@@ -180,6 +190,7 @@
     {
       "mark": "square",
       "width": 600,
+      "height": 250,
       "transform": [
         {"calculate": "year(datum.Year)", "as": "Year"},
         {"calculate": "datum.Value_of_production * 1000", "as": "Total_Value"}
@@ -189,7 +200,7 @@
         "x": {"field": "State", "type": "nominal", "title": "State"},
         "color": {
           "condition": {
-            "selection": "map_filt",
+            "selection": "pts",
             "field": "Total_Value",
             "type": "quantitative",
             "scale": {"scheme": "yelloworangered"}
@@ -199,7 +210,7 @@
         "size": {
           "condition": [
             {"selection": {"and": ["map_filt", "pts"]}, "value": 500},
-            {"selection": {"or": ["map_filt", "pts"]}, "value": 100}
+            {"selection": "map_filt", "value": 100}
           ],
           "value": 10
         },
@@ -213,8 +224,8 @@
         "tooltip": [
           {"field": "State"},
           {"field": "Year", "title": "Year"},
-          {"field": "Total_Value", "as": "Total Value (US$)"},
-          {"field": "Total Production (lbs)"}
+          {"field": "Total_Value", "title": "Total Value (USD)", "format": "$,"},
+          {"field": "Production", "title": "Total Production (lbs)", "format": ","}
         ]
       }
     }
